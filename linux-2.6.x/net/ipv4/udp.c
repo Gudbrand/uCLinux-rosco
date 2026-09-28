@@ -431,7 +431,7 @@ static int udp_push_pending_frames(struct sock *sk, struct udp_opt *up)
 			uh->check = ~csum_tcpudp_magic(fl->fl4_src, fl->fl4_dst,
 					up->len, IPPROTO_UDP, 0);
 		} else {
-			skb->csum = csum_partial((char *)uh,
+			skb->csum = csum_partial((const unsigned char *)uh,
 					sizeof(struct udphdr), skb->csum);
 			uh->check = csum_tcpudp_magic(fl->fl4_src, fl->fl4_dst,
 					up->len, IPPROTO_UDP, skb->csum);
@@ -451,7 +451,7 @@ static int udp_push_pending_frames(struct sock *sk, struct udp_opt *up)
 
 			skb->ip_summed = CHECKSUM_NONE;
 		} else {
-			skb->csum = csum_partial((char *)uh,
+			skb->csum = csum_partial((const unsigned char *)uh,
 					sizeof(struct udphdr), skb->csum);
 		}
 

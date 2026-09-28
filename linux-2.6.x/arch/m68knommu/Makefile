@@ -8,6 +8,7 @@
 # (C) Copyright 2002, Greg Ungerer <gerg@snapgear.com>
 #
 
+platform-$(CONFIG_M68000)	:= rosco
 platform-$(CONFIG_M68328)	:= 68328
 platform-$(CONFIG_M68EZ328)	:= 68EZ328
 platform-$(CONFIG_M68VZ328)	:= 68VZ328
@@ -21,6 +22,7 @@ platform-$(CONFIG_M5307)	:= 5307
 platform-$(CONFIG_M5407)	:= 5407
 PLATFORM := $(platform-y)
 
+board-$(CONFIG_ROSCO_M68K)	:= rosco_m68k
 board-$(CONFIG_PILOT)		:= pilot
 board-$(CONFIG_UCSIMM)		:= ucsimm
 board-$(CONFIG_UCDIMM)		:= ucdimm
@@ -72,6 +74,7 @@ cflags-$(CONFIG_M5272)		:= -m5307 -Wa,-S -Wa,-m5307
 cflags-$(CONFIG_M5282)		:= -m5307 -Wa,-S -Wa,-m5307
 cflags-$(CONFIG_M5307)		:= -m5307 -Wa,-S -Wa,-m5307
 cflags-$(CONFIG_M5407)		:= -m5200 -Wa,-S -Wa,-m5200
+cflags-$(CONFIG_M68000)		:= -m68000
 cflags-$(CONFIG_M68328)		:= -m68000
 cflags-$(CONFIG_M68EZ328)	:= -m68000
 cflags-$(CONFIG_M68VZ328)	:= -m68000
@@ -81,6 +84,7 @@ AFLAGS += $(cflags-y)
 
 CFLAGS += $(cflags-y)
 CFLAGS += -fno-builtin
+CFLAGS += -fgnu89-inline
 CFLAGS += -Os -g
 CFLAGS += -D__linux__
 CFLAGS += -DUTS_SYSNAME=\"uClinux\"

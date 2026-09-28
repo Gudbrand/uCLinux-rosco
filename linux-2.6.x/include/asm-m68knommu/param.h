@@ -11,6 +11,9 @@
 #define HZ 100
 #endif
 #endif
+#ifdef CONFIG_M68000
+#define HZ 100
+#endif
 #ifdef CONFIG_M68EN302
 #define HZ 100
 #endif

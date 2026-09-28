@@ -34,6 +34,14 @@ choice
 	prompt "CPU"
 	default M68EZ328
 
+config M68000
+	bool "MC68000 / MC68010"
+	help
+	  Motorola MC68000 and MC68010 processor support.
+	  This option uses the MC68000 instruction set so that the
+	  generated kernel is compatible with the MC68010 used by
+	  rosco_m68k.
+
 config M68328
 	bool "MC68328"
 	help
@@ -196,6 +204,12 @@ config OLDMASK
 	  Specifically this is the 1H55J mask revision.
 
 comment "Platform"
+
+config ROSCO_M68K
+	bool "rosco_m68k Classic support"
+	depends on M68000
+	help
+	  Support for the rosco_m68k Classic MC68010 computer.
 
 config PILOT3
 	bool "Pilot 1000/5000, PalmPilot Personal/Pro, or PalmIII support"

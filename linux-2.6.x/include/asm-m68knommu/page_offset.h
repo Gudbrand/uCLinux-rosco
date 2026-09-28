@@ -3,7 +3,9 @@
 #include <asm/shglcore.h>
 
 /* This handles the memory map.. */
-
+#ifdef CONFIG_M68000
+#define PAGE_OFFSET_RAW 0x00000000
+#endif
 #ifdef CONFIG_COLDFIRE
 #if defined(CONFIG_SMALL)
 #define PAGE_OFFSET_RAW		0x30020000

@@ -90,7 +90,6 @@ struct avc_audit_data {
 #define AVC_CAV_PROBES           6
 #define AVC_CAV_MISSES           7
 #define AVC_NSTATS               8
-extern unsigned avc_cache_stats[AVC_NSTATS];
 
 #ifdef AVC_CACHE_STATS
 static inline void avc_cache_stats_incr(int type)

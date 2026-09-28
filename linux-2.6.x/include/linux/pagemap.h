@@ -230,6 +230,7 @@ static inline void fault_in_pages_readable(const char __user *uaddr, int size)
 				((unsigned long)end & PAGE_MASK))
 		 	__get_user(c, (char *)end);
 	}
+    (void)c;
 }
 
 #endif /* _LINUX_PAGEMAP_H */

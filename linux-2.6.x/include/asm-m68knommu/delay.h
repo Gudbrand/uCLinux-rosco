@@ -53,9 +53,9 @@ extern __inline__ void udelay(unsigned long usecs)
                    "d" (loops_per_jiffy*HZ));
 	__delay(usecs);
 
-#elif defined(CONFIG_M68328) || defined(CONFIG_M68EZ328) || \
+#elif defined(CONFIG_M68000) || defined(CONFIG_M68328) || \
 		defined(CONFIG_COLDFIRE) || defined(CONFIG_M68360) || \
-		defined(CONFIG_M68VZ328)
+		defined(CONFIG_M68EZ328) || defined(CONFIG_M68VZ328)
 	register unsigned long full_loops, part_loops;
 
 	full_loops = ((usecs * HZ) / 1000000) * loops_per_jiffy;

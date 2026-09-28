@@ -512,7 +512,6 @@ extern void show_edid(unsigned char *edid);
 
 /* drivers/video/modedb.c */
 #define VESA_MODEDB_SIZE 34
-extern const struct fb_videomode vesa_modes[];
 
 /* drivers/video/fbcmap.c */
 extern int fb_alloc_cmap(struct fb_cmap *cmap, int len, int transp);
@@ -538,6 +537,9 @@ struct fb_videomode {
     u32 sync;
     u32 vmode;
 };
+
+/* drivers/video/modedb.c */
+extern const struct fb_videomode vesa_modes[];
 
 #ifdef MODULE
 static inline int fb_find_mode(struct fb_var_screeninfo *var,

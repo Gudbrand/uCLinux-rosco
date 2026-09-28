@@ -139,6 +139,21 @@
 #define	RAM_LENGTH	0x3ffc00
 #endif
 
+/*
+ * rosco_m68k Classic
+ *
+ * 0x000000-0x0003ff : MC68010 vector table
+ * 0x000400-0x4fffff : kernel and general RAM
+ * 0x00500000        : end of physical RAM
+ */
+#if defined(CONFIG_ROSCO_M68K)
+#define RAMVEC_START    0x00000000
+#define RAMVEC_LENGTH   0x00000400
+#define RAM_START       0x00000400
+#define RAM_LENGTH      0x004ffc00
+#define RAM_END         0x00500000
+#endif
+
 #if defined(CONFIG_RAMKERNEL)
 #define	TEXT		ram
 #define	DATA		ram

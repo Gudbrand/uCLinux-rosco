@@ -424,8 +424,8 @@ int presto_prep(struct dentry *, struct presto_cache **,
                        struct presto_file_set **);
 /* cache.c */
 extern struct presto_cache *presto_cache_init(void);
-extern inline void presto_cache_add(struct presto_cache *cache);
-extern inline void presto_cache_init_hash(void);
+extern void presto_cache_add(struct presto_cache *cache);
+extern void presto_cache_init_hash(void);
 
 struct presto_cache *presto_cache_find(struct super_block *sb);
 

@@ -43,7 +43,7 @@ extern int send_and_receive(int, unsigned int, unsigned char, unsigned char,
                 RspMessage *, int);
 extern int sendmessage(int, unsigned int, unsigned int, unsigned int,
                 unsigned int, unsigned int, unsigned int, unsigned int *);
-extern inline void pullphone(char *, char *);
+extern void pullphone(char *, char *);
 
 #ifdef DEBUG
 /*

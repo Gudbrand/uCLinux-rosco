@@ -961,7 +961,8 @@ static int packet_create(struct socket *sock, int protocol)
 	sock_init_data(sock,sk);
 	sk_set_owner(sk, THIS_MODULE);
 
-	po = pkt_sk(sk) = kmalloc(sizeof(*po), GFP_KERNEL);
+	po = kmalloc(sizeof(*po), GFP_KERNEL);
+	sk->sk_protinfo = po;
 	if (!po)
 		goto out_free;
 	memset(po, 0, sizeof(*po));

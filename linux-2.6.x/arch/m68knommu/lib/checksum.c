@@ -143,7 +143,7 @@ csum_partial_copy_from_user(const char *src, char *dst, int len, int sum, int *c
 {
 	if (csum_err) *csum_err = 0;
 	memcpy(dst, src, len);
-	return csum_partial(dst, len, sum);
+	return csum_partial((const unsigned char *)dst, len, sum);
 }
 
 /*
@@ -154,5 +154,5 @@ unsigned int
 csum_partial_copy(const char *src, char *dst, int len, int sum)
 {
 	memcpy(dst, src, len);
-	return csum_partial(dst, len, sum);
+	return csum_partial((const unsigned char *)dst, len, sum);
 }

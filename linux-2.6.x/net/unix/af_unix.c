@@ -206,7 +206,7 @@ static int unix_mkname(struct sockaddr_un * sunaddr, int len, unsigned *hashp)
 		return len;
 	}
 
-	*hashp = unix_hash_fold(csum_partial((char*)sunaddr, len, 0));
+	*hashp = unix_hash_fold(csum_partial((const unsigned char *)sunaddr, len, 0));
 	return len;
 }
 

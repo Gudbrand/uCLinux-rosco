@@ -231,13 +231,13 @@ extern void bio_put(struct bio *);
 
 extern void bio_endio(struct bio *, unsigned int, int);
 struct request_queue;
-extern inline int bio_phys_segments(struct request_queue *, struct bio *);
-extern inline int bio_hw_segments(struct request_queue *, struct bio *);
+extern int bio_phys_segments(struct request_queue *, struct bio *);
+extern int bio_hw_segments(struct request_queue *, struct bio *);
 
-extern inline void __bio_clone(struct bio *, struct bio *);
+extern void __bio_clone(struct bio *, struct bio *);
 extern struct bio *bio_clone(struct bio *, int);
 
-extern inline void bio_init(struct bio *);
+extern void bio_init(struct bio *);
 
 extern int bio_add_page(struct bio *, struct page *, unsigned int,unsigned int);
 extern int bio_get_nr_vecs(struct block_device *);
@@ -284,7 +284,7 @@ extern inline void bvec_kunmap_irq(char *buffer, unsigned long *flags)
 #define bvec_kunmap_irq(buf, flags)	do { *(flags) = 0; } while (0)
 #endif
 
-extern inline char *__bio_kmap_irq(struct bio *bio, unsigned short idx,
+static inline char *__bio_kmap_irq(struct bio *bio, unsigned short idx,
 				   unsigned long *flags)
 {
 	return bvec_kmap_irq(bio_iovec_idx(bio, idx), flags);

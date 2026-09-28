@@ -363,6 +363,7 @@ static int ksoftirqd(void * __bind_cpu)
 
 		__set_current_state(TASK_INTERRUPTIBLE);
 	}
+    return 0;
 }
 
 static int __devinit cpu_callback(struct notifier_block *nfb,

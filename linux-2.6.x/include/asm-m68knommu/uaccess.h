@@ -23,7 +23,7 @@ static inline int _access_ok(unsigned long addr, unsigned long size)
 		(is_in_rom(addr) && is_in_rom(addr+size)));
 }
 
-extern inline int verify_area(int type, const void * addr, unsigned long size)
+static inline int verify_area(int type, const void * addr, unsigned long size)
 {
 	return access_ok(type,addr,size)?0:-EFAULT;
 }
@@ -98,7 +98,7 @@ extern int __put_user_bad(void);
 #define get_user(x, ptr)					\
 ({								\
     int __gu_err = 0;						\
-    typeof(*(ptr)) __gu_val = 0;				\
+    typeof((*(ptr)) + 0) __gu_val = 0;				\
     switch (sizeof(*(ptr))) {					\
     case 1:							\
 	__get_user_asm(__gu_err, __gu_val, ptr, b, "=d");	\
@@ -129,8 +129,21 @@ extern int __get_user_bad(void);
 		 : "=d" (x)							\
 		 : "m" (*__ptr(ptr)))
 
-#define copy_from_user(to, from, n)		(memcpy(to, from, n), 0)
-#define copy_to_user(to, from, n)		(memcpy(to, from, n), 0)
+static inline unsigned long copy_from_user(void *to,
+					   const void *from,
+					   unsigned long n)
+{
+	memcpy(to, from, n);
+	return 0;
+}
+
+static inline unsigned long copy_to_user(void *to,
+					 const void *from,
+					 unsigned long n)
+{
+	memcpy(to, from, n);
+	return 0;
+}
 
 #define __copy_from_user(to, from, n) copy_from_user(to, from, n)
 #define __copy_to_user(to, from, n) copy_to_user(to, from, n)

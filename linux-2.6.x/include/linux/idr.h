@@ -63,5 +63,4 @@ int idr_get_new(struct idr *idp, void *ptr);
 void idr_remove(struct idr *idp, int id);
 void idr_init(struct idr *idp);
 
-extern kmem_cache_t *idr_layer_cache;
 

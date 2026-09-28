@@ -2,6 +2,7 @@
 #define __ARCH_M68KNOMMU_CACHE_H
 
 /* bytes per L1 cache line */
+#define L1_CACHE_SHIFT  4
 #define        L1_CACHE_BYTES  16	/* this need to be at least 1 */
 
 /* m68k-elf-gcc  2.95.2 doesn't like these */

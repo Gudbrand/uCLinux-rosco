@@ -96,7 +96,6 @@ typedef union
 #define __ll_highpart(t) ((USItype) (t) / __ll_B)
 
 #if !defined (count_leading_zeros)
-extern const UQItype __clz_tab[];
 #define count_leading_zeros(count, x) \
   do {                                  \
     USItype __xr = (x);                         \

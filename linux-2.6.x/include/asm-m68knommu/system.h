@@ -94,6 +94,7 @@ asmlinkage void resume(void);
 #define mb()   asm volatile (""   : : :"memory")
 #define rmb()  asm volatile (""   : : :"memory")
 #define wmb()  asm volatile (""   : : :"memory")
+#define read_barrier_depends()	do { } while (0)
 #define set_rmb(var, value)    do { xchg(&var, value); } while (0)
 #define set_mb(var, value)     set_rmb(var, value)
 #define set_wmb(var, value)    do { var = value; wmb(); } while (0)

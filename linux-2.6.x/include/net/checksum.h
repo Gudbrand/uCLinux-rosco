@@ -112,7 +112,7 @@ unsigned int csum_and_copy_from_user (const char *src, char *dst,
 static __inline__ unsigned int csum_and_copy_to_user
 (const char *src, char *dst, int len, unsigned int sum, int *err_ptr)
 {
-	sum = csum_partial(src, len, sum);
+	sum = csum_partial((const unsigned char *)src, len, sum);
 
 	if (access_ok(VERIFY_WRITE, dst, len)) {
 		if (copy_to_user(dst, src, len) == 0)

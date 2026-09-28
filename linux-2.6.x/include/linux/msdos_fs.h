@@ -330,7 +330,6 @@ extern int vfat_rename(struct inode *old_dir, struct dentry *old_dentry,
 extern int vfat_fill_super(struct super_block *sb, void *data, int silent);
 
 /* vfat/vfatfs_syms.c */
-extern struct file_system_type vfat_fs_type;
 
 #endif /* __KERNEL__ */
 
